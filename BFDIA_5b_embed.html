@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFDIA 5bed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .pc-notice {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            color: #636e72;
+            font-weight: 600;
+        }
+
+        .info-section {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .embed-info {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            color: #2d3436;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .game-container {
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            width: 560px;
+            height: 384px;
+            max-width: 100%;
+        }
+
+        .game-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            border-radius: 20px;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(253, 203, 110, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .download-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .download-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.6);
+        }
+
+        .download-icon {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .credits {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .credits-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            color: #2d3436;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .credits-text {
+            color: #636e72;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .credits-text strong {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BFDIA 5bed</h1>
+            <div class="pc-notice">Only for PC!</div>
+        </div>
+
+        <div class="game-container">
+            <iframe src="https://archive.org/embed/bfdia5b" width="640" height="480" allowfullscreen></iframe>
+        </div>
+
+        <div class="info-section">
+            <p class="embed-info"><strong>BFDIA 5bed</strong> is an embed version of BFDIA 5b. This version allows you to play the game directly in your browser using the Ruffle Flash emulator. BFDIA 5b is a game based on the Battle for Dream Island Again series, an animated web series created by jacknjellify. The game features interactive gameplay where you can control characters and make decisions that affect the storyline.</p>
+        </div>
+
+        <div class="download-section">
+            <div class="download-text">If the Ruffle isn't working, download here!</div>
+            <a href="https://archive.org/download/bfdia5b/5b.swf" class="download-btn" download>
+                <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                Download SWF
+            </a>
+        </div>
+
+        <div class="credits">
+            <div class="credits-title">Game Credits</div>
+            <div class="credits-text">
+                Created by <strong>Cary Huang</strong> and <strong>Michael Huang</strong><br>
+                (a.k.a. <strong>jacknjellify</strong>)
+            </div>
+        </div>
+    </div>
+</body>
+</html>
